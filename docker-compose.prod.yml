@@ -9,6 +9,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - ./config/vhost:/etc/nginx/vhost.d:ro
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html

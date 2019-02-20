@@ -1,3 +1,3 @@
 FROM jwilder/nginx-proxy:latest
 
-ADD ./conf/proxy.conf /etc/nginx/proxy.conf
+ADD ./config/proxy.conf /etc/nginx/proxy.conf
