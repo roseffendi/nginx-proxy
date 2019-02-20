@@ -16,7 +16,6 @@ services:
       - dhparam:/etc/nginx/dhparam
       - certs:/etc/nginx/certs:ro
       - $DOCKER_DAEMON:/tmp/docker.sock:ro
-    restart: always
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -31,7 +30,6 @@ services:
       - $DOCKER_DAEMON:/var/run/docker.sock:ro
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
-    restart: always
 
 volumes:
   conf:
