@@ -23,7 +23,7 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
-      - vhost:/etc/nginx/vhost.d
+      - ./config/vhost:/etc/nginx/vhost.d:ro
       - html:/usr/share/nginx/html
       - dhparam:/etc/nginx/dhparam:ro
       - certs:/etc/nginx/certs
