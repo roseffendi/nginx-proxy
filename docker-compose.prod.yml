@@ -9,10 +9,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./config/vhost:/etc/nginx/vhost.d
       - conf:/etc/nginx/conf.d
       - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam
+      - $DHPARAM:/etc/nginx/dhparam
       - certs:/etc/nginx/certs:ro
       - $DOCKER_DAEMON:/tmp/docker.sock:ro
 
@@ -22,9 +21,8 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
-      - ./config/vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam:ro
+      - $DHPARAM:/etc/nginx/dhparam:ro
       - certs:/etc/nginx/certs
       - $DOCKER_DAEMON:/var/run/docker.sock:ro
     environment:
@@ -33,7 +31,6 @@ services:
 volumes:
   conf:
   html:
-  dhparam:
   certs:
 
 networks:

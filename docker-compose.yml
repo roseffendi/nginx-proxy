@@ -2,13 +2,15 @@ version: '3'
 
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy
+    build: .
     ports:
       - 80:80
       - 443:443
     volumes:
+      - ./config/vhost:/etc/nginx/vhost.d
       - $DOCKER_DAEMON:/tmp/docker.sock:ro
       - $CERTS:/etc/nginx/certs
+      - ./dhparam.pem:/etc/nginx/dhparam/dhparam.pem
 
 networks:
   default:
